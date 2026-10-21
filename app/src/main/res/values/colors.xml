@@ -1,0 +1,14 @@
+<resources>
+    <color name="green_dark">#1B5E20</color>
+    <color name="green">#2E7D32</color>
+    <color name="green_light">#C8E6C9</color>
+    <color name="cream">#FFF8E7</color>
+    <color name="orange">#EF6C00</color>
+    <color name="orange_light">#FFE0B2</color>
+    <color name="tomato">#D32F2F</color>
+    <color name="tomato_light">#FFCDD2</color>
+    <color name="text_dark">#263238</color>
+    <color name="text_muted">#607D8B</color>
+    <color name="white">#FFFFFF</color>
+    <color name="card_bg">#FFFFFF</color>
+</resources>
