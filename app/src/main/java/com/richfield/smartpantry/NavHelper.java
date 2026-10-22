@@ -24,9 +24,20 @@ final class NavHelper {
     }
 
     /** Wires up the bottom navigation bar of the given screen. */
-    static void setupBottomNav(final Activity activity, final int selectedItemId) {
-        BottomNavigationView nav = activity.findViewById(R.id.bottomNav);
+    static void setupBottomNav(final Activity activity,
+                               final int selectedItemId) {
+
+        BottomNavigationView nav =
+                activity.findViewById(R.id.bottomNav);
+
+        // Stop safely if this screen has no bottom navigation.
+        if (nav == null) {
+            return;
+        }
+
         nav.setSelectedItemId(selectedItemId);
+
+        // Keep the rest of your existing method below this line.
 
         nav.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
