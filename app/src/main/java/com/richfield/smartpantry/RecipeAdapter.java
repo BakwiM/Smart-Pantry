@@ -43,27 +43,61 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         return new ViewHolder(view);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Recipe recipe = items.get(position);
 
-        holder.name.setText(recipe.name);
-        holder.avatar.setText(recipe.name.substring(0, 1).toUpperCase(Locale.getDefault()));
+        String recipeName = recipe.name == null
+                ? "" : recipe.name.trim();
+
+        holder.name.setText(
+                recipeName.isEmpty() ? "Untitled Recipe" : recipeName
+        );
+
+        // Display the first letter, or a fallback if the name is missing.
+        String avatarLetter = recipeName.isEmpty()
+                ? "?"
+                : recipeName.substring(0, 1)
+                .toUpperCase(Locale.getDefault());
+
+        holder.avatar.setText(avatarLetter);
         holder.ingredients.setText(ingredientSummary(recipe));
-        holder.itemView.setOnClickListener(v -> listener.onOpen(recipe));
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onOpen(recipe);
+            }
+        });
     }
 
+
     /** "Pasta • Tomato • Garlic" */
+
     private String ingredientSummary(Recipe recipe) {
+        if (recipe.ingredients == null || recipe.ingredients.isEmpty()) {
+            return "No ingredients listed";
+        }
+
         StringBuilder text = new StringBuilder();
+
         for (String ingredient : recipe.ingredients.keySet()) {
+            if (ingredient == null || ingredient.trim().isEmpty()) {
+                continue;
+            }
+
             if (text.length() > 0) {
                 text.append(" • ");
             }
-            text.append(capitalise(ingredient));
+
+            text.append(capitalise(ingredient.trim()));
         }
-        return text.toString();
+
+        return text.length() == 0
+                ? "No ingredients listed"
+                : text.toString();
     }
+
 
     static String capitalise(String text) {
         if (text.isEmpty()) {
