@@ -23,10 +23,10 @@ public class Ingredient {
     public Ingredient(int id, String name, double quantity,
                       String unit, String expiry) {
         this.id = id;
-        this.name = name;
+        this.name = name == null ? "" : name.trim();
         this.quantity = quantity;
-        this.unit = unit == null ? "" : unit;
-        this.expiry = expiry == null ? "" : expiry;
+        this.unit = unit == null ? "" : unit.trim();
+        this.expiry = expiry == null ? "" : expiry.trim();
     }
 
     // Check whether the ingredient contains valid information.
