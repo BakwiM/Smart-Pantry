@@ -40,7 +40,3 @@ closed and reopened. Tables: `ingredients`, `recipes`, `recipe_ingredients`.
 
 Requirements: Java 17, `minSdk 24`, `compileSdk 35`.
 
-## Academic note
-A real GitHub history with at least ten significant, incremental commits is required for the assignment.
-As you develop, make commitments (such as "Add bottom navigation" or "Add Material theme and colours").
-"Add expiry date picker") and display the video's history. Don't fabricate history.
