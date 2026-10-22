@@ -9,6 +9,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.appbar.MaterialToolbar;
@@ -112,8 +113,8 @@ public class AddEditIngredientActivity extends AppCompatActivity {
         } else {
             try {
                 quantity = Double.parseDouble(quantityText);
-                if (quantity <= 0) {
-                    quantityLayout.setError("Enter a quantity greater than 0");
+                if (!Double.isFinite(quantity) || quantity <= 0) {
+                    quantityLayout.setError("Enter a valid quantity greater than 0");
                     valid = false;
                 }
             } catch (NumberFormatException e) {
